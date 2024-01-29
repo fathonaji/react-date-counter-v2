@@ -26,6 +26,10 @@ function Counter() {
   function adjustCount(value) {
     setCount(isNaN(value) ? 0 : Number(value));
   }
+  function reset() {
+    setCount(0);
+    setStep(1);
+  }
   return (
     <>
       <div className="d-flex">
@@ -61,7 +65,7 @@ function Counter() {
         )}
       </div>
       <div className="d-flex mt-1">
-        <button>Reset</button>
+        <button onClick={reset}>Reset</button>
       </div>
     </>
   );

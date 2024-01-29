@@ -14,17 +14,14 @@ function Counter() {
   const date = new Date();
   date.setDate(date.getDate() + count);
 
-  function increaseStep() {
-    setStep(step + 1);
-  }
-  function decreaseStep() {
-    if (step > 1) setStep(step - 1);
-  }
   function increaseCount() {
     setCount(count + step);
   }
   function decreaseCount() {
     setCount(count - step);
+  }
+  function adjustStep(value) {
+    setStep(Number(value));
   }
   function adjustCount(value) {
     setCount(isNaN(value) ? 0 : Number(value));
@@ -32,7 +29,14 @@ function Counter() {
   return (
     <>
       <div className="d-flex">
-        <input type="range" min="0" max="10" />
+        <input
+          type="range"
+          min="1"
+          max="10"
+          value={step}
+          onChange={(e) => adjustStep(e.target.value)}
+        />
+        {step}
       </div>
       <div className="d-flex">
         <button onClick={decreaseCount}>-</button>

@@ -64,9 +64,11 @@ function Counter() {
           </div>
         )}
       </div>
-      <div className="d-flex mt-1">
-        <button onClick={reset}>Reset</button>
-      </div>
+      {(count !== 0 || step !== 1) && (
+        <div className="d-flex mt-1">
+          <button onClick={reset}>Reset</button>
+        </div>
+      )}
     </>
   );
 }
